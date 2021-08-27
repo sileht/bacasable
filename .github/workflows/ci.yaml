@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      js: ${{ steps.changes.outputs.js }}
+      python: ${{ steps.changes.outputs.python }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            js:
+              - 'js/**'
+            python:
+              - 'python/**'
+
+  javascript:
+    needs: changes
+    if: ${{ needs.changes.outputs.js == 'true' }}
+    uses: ./.github/workflows/javascript.yaml
+
+  python:
+    needs: changes
+    if: ${{ needs.changes.outputs.python == 'true' }}
+    uses: ./.github/workflows/python.yaml
+
+  all-green:
+    if: always()
+    needs: [changes, javascript, python]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
+          allowed-skips: ${{ toJSON(needs) }}
