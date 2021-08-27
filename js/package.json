@@ -1,0 +1,12 @@
+{
+  "name": "js-test-project",
+  "version": "1.0.0",
+  "description": "Small JS project with tests",
+  "main": "main.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "vitest": "^1.0.0"
+  }
+}

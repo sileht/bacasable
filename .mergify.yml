@@ -1,0 +1,20 @@
+queue_rules:
+  - name: standard
+    queue_conditions:
+      - base=main
+
+priority_rules:
+  - name: high priority
+    conditions:
+      - label = urgent
+    priority: high
+    
+defaults:
+  queue_rule:
+    batch_max_wait_time: 5 seconds
+    batch_size: 3
+    checks_timeout: 5 minutes
+    
+merge_queue:
+  max_parallel_checks: 5
+
