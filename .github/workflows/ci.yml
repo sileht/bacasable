@@ -11,11 +11,12 @@ on:
 jobs:
   merge-queue-label:
     runs-on: ubuntu-20.04
-    if: startsWith('mergify/merge-queue', github.head_ref)
+    # if: startsWith('mergify/merge-queue/', github.head_ref)
     steps:
       - uses: actions/checkout@v2
       - run: |
-          repository_url="${{ github.github.server_url }}/${{ github.repository }}"
+          echo ${{ github.head_ref }}
+          repository_url="${{ github.server_url }}/${{ github.repository }}"
           merge_queue_url="${repository_url}/pull/${{ github.event.pull_request.number }}"
 
           for pr_number in $(gh pr view --json body -q ".body" $merge_queue_url | sed -n -e '/```yaml/,/```/p' | sed -e '1d;$d' | yq '.pull_requests[] | .number') ; do
@@ -23,3 +24,5 @@ jobs:
               gh pr edit --add-label $label $merge_queue_url
             done
           done
+        env:
+          GH_TOKEN: ${{ github.token }}
