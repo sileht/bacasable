@@ -11,7 +11,7 @@ on:
 jobs:
   merge-queue-label:
     runs-on: ubuntu-20.04
-    if: startsWith("mergify/merge-queue", github.head_ref)
+    if: startsWith('mergify/merge-queue', github.head_ref)
     steps:
       - uses: actions/checkout@v2
       - run: |
