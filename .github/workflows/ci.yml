@@ -4,6 +4,9 @@ on:
     types:
       - opened
       - edited
+      - reopened
+      - closed
+      - synchronize
 
 jobs:
   merge-queue-label:
