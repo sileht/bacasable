@@ -21,8 +21,8 @@ jobs:
         run: |
           set -x
           set -v
-          gh pr view --json body -q ".body" $MERGE_QUEUE_PR_URL | sed -n -e '/```yaml/,/```/p' | sed -e '1d;$d' | yq '.pull_requests[] | .number' | while read pr_number ; do
-            gh pr view --json labels -q '.labels[]|.name' ${REPOSITORY_URL}/pull/$pr_number | while read label ; do
+          gh pr view --json body -q ".body" $MERGE_QUEUE_PR_URL | sed -n -e '/```yaml/,/```/p' | sed -e '1d;$d' | yq '.pull_requests[]|.number' | while read pr_number ; do
+            gh pr view --json labels -q '.labels[]|.name' ${REPOSITORY_URL}/pull/$pr_number | while read label ; do
               gh pr edit --add-label $label $MERGE_QUEUE_PR_URL
             done
           done
