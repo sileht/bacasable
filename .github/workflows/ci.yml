@@ -1,11 +1,22 @@
-name: Continuous Integration
+name: Mergify merge-queue labels copier
 on:
   pull_request:
+    types:
+      - opened
+      - edited
 
 jobs:
-  test:
+  merge-queue-label:
     runs-on: ubuntu-20.04
+    if: github.head_ref.startsWith("mergify/merge-queue")
     steps:
       - uses: actions/checkout@v2
       - run: |
-          sleep 30
+          repository_url="${{ github.github.server_url }}/${{ github.repository }}"
+          merge_queue_url="${repository_url}/pull/${{ github.event.pull_request.number }}"
+
+          for pr_number in $(gh pr view --json body -q ".body" $merge_queue_url | sed -n -e '/```yaml/,/```/p' | sed -e '1d;$d' | yq '.pull_requests[] | .number') ; do
+            for label in $(gh pr view --json labels -q '.labels[]|.name' $repository_url/pull/$pr_number); do
+              gh pr edit --add-label $label $merge_queue_url
+            done
+          done
