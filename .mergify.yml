@@ -1,3 +1,5 @@
+extends: .github
+
 pull_request_rules:
   - name: Automatic queue
     conditions:
