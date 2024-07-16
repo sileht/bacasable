@@ -1,28 +1,18 @@
-name: Mergify merge-queue labels copier
+name: Testing thing
 on:
   pull_request:
-    types:
-      - opened
-      - edited
-      - reopened
-      - closed
-      - synchronize
 
 jobs:
-  merge-queue-labels-copier:
-    runs-on: ubuntu-20.04
+  foobar_id:
+    name: foobar_name
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        foo: [bar, foo]
+        os: [linux, macos]
     steps:
-      - name: Copying labels
-        if: startsWith('mergify/merge-queue/', github.head_ref)
-        env:
-          REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
-          MERGE_QUEUE_PR_URL: ${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.pull_request.number }}
-          GH_TOKEN: ${{ github.token }}
+      - name: Get job name
         run: |
-          set -x
-          set -v
-          gh pr view --json body -q ".body" $MERGE_QUEUE_PR_URL | sed -n -e '/```yaml/,/```/p' | sed -e '1d;$d' | yq '.pull_requests[]|.number' | while read pr_number ; do
-            gh pr view --json labels -q '.labels[]|.name' ${REPOSITORY_URL}/pull/$pr_number | while read label ; do
-              gh pr edit --add-label "$label" $MERGE_QUEUE_PR_URL
-            done
-          done
+          # Both work:
+          echo "Job name is $GITHUB_JOB"
+          echo "How about ${{ github.jobs[github.job].name }}"
