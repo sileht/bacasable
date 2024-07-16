@@ -15,4 +15,4 @@ jobs:
         run: |
           # Both work:
           echo "Job name is $GITHUB_JOB"
-          echo "How about ${{ github.jobs[github.job].name }}"
+          echo "How about ${{ matrix }}"
