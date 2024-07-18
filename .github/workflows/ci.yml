@@ -8,7 +8,10 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Get job name
-        run: poetry run pytest --junit-xml test-report.xml .
+        run: 
+          pip install poetry
+          poetry install --sync
+          poetry run pytest --junit-xml test-report.xml .
 
       - name: Mergify JUnit XML Upload
         if: always()
