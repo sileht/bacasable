@@ -24,5 +24,6 @@ jobs:
         if: always()
         uses: mergifyio/gha-ci-issues@v1
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           token: ${{ secrets.MERGIFY_CI_ISSUES_TOKEN }}
           report_paths: test-report.xml
