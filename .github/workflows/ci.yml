@@ -6,13 +6,13 @@ jobs:
   foobar_id:
     name: foobar_name
     runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        foo: [bar, foo]
-        os: [linux, macos]
     steps:
       - name: Get job name
-        run: |
-          # Both work:
-          echo "Job name is $GITHUB_JOB"
-          echo "How about ${{ matrix }}"
+        run: poetry run pytest --junit-xml test-report.xml .
+
+      - name: Mergify JUnit XML Upload
+        if: always()
+        uses: mergifyio/gha-ci-issues@v1
+        with:
+          token: ${{ secrets.MERGIFY_CI_ISSUES_TOKEN }}
+          report_paths: test-report.xml
