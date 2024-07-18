@@ -7,8 +7,18 @@ jobs:
     name: foobar_name
     runs-on: ubuntu-22.04
     steps:
-      - name: Get job name
-        run: poetry run pytest --junit-xml test-report.xml .
+      - uses: actions/checkout@v4
+
+      - name: Setup Python 🔧
+        uses: actions/setup-python@v5.1.1
+        with:
+          python-version: 3.12.4
+
+      - name: tests
+        run: |
+          pip install poetry
+          poetry install --sync
+          poetry run pytest --junit-xml test-report.xml .
 
       - name: Mergify JUnit XML Upload
         if: always()
