@@ -3,8 +3,8 @@ on:
   pull_request:
 
 jobs:
-  foobar_id:
-    name: foobar_name
+  jobjob:
+    # name: foobar_name
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
