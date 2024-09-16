@@ -1,7 +1,6 @@
 pull_request_rules:
   - name: Automatic queue
-    conditions:
-      - label=ready-to-merge
+    conditions: []
     actions:
       queue:
 queue_rules:
