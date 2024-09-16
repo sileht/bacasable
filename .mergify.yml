@@ -8,4 +8,4 @@ queue_rules:
   - name: Bacasable
     queue_conditions:
       - and:
-          - check-success = continuous-integration/travis-ci
+          - label = queue
