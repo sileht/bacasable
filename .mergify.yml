@@ -6,9 +6,7 @@ pull_request_rules:
       queue:
 queue_rules:
   - name: Bacasable
-    queue_conditions:
-      - and:
-          - label = queue
+    queue_conditions: []
     merge_conditions:
       - and:
           - check-success = continuous-integration/travis-ci
