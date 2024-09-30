@@ -12,3 +12,6 @@ merge_protections:
       - label=autoqueue
 queue_rules:
   - name: qsdqsd
+    merge_conditions:
+      - and:
+          - schedule = 09:00-19:00[America/Vancouver]
