@@ -22,7 +22,7 @@ jobs:
 
       - name: Mergify JUnit XML Upload
         if: always()
-        uses: mergifyio/gha-ci-issues@v3
+        uses: mergifyio/gha-ci-issues@devs/sileht/ci-debug/I03ce927997024e06d3c9de7c32e8475ab0759111
         with:
           token: ${{ secrets.MERGIFY_CI_ISSUES_TOKEN }}
           report_paths: test-report.xml
