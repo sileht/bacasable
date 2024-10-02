@@ -14,5 +14,5 @@ queue_rules:
   - name: default
     merge_conditions:
       - and:
-          - label = mergeit
+          - check-success = itneverruns.com
           - schedule = 15:00-19:00[America/Vancouver]
