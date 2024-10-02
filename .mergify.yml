@@ -14,5 +14,5 @@ queue_rules:
   - name: default
     merge_conditions:
       - and:
-          - " = mergeit"
+          - label = mergeit
           - schedule = 15:00-19:00[America/Vancouver]
