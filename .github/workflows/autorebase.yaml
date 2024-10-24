@@ -35,6 +35,7 @@ jobs:
 
           STACK_BRANCH="${HEAD%%/I*}"
           git remote -v
+          git checkout -b main "origin/$BASE"
           git branch --set-upstream-to "origin/$BASE"
           mergify --debug stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$STACK_BRANCH" --branch-prefix "" --trunk "origin/$BASE"
 
