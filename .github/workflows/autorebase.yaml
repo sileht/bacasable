@@ -35,9 +35,11 @@ jobs:
 
           STACK_BRANCH="${HEAD%%/I*}"
           git remote -v
-          git branch -a
           git branch --set-upstream-to "origin/$BASE"
           mergify --debug stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$STACK_BRANCH" --branch-prefix "" --trunk "origin/$BASE"
+
+          git branch
+          git log --graph --abbrev-commit --pretty="tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset" -15
 
           mergify --debug stack push --author "$AUTHOR" --branch "$STACK_BRANCH" --branch-prefix "" --trunk "origin/$BASE" -n
 
