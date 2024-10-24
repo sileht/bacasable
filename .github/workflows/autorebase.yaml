@@ -3,13 +3,13 @@ on:
   pull_request:
     types:
       - edited
+    branches:
+      - main
+      - devs/**
+
   
 jobs:
   autorebase:
-    permissions:
-      contents: write
-      pull-requests: write
-      issues: write
     # name: foobar_name
     runs-on: ubuntu-22.04
     steps:
@@ -17,7 +17,6 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.base.ref }}
-
 
       - name: Setup Python 🔧
         uses: actions/setup-python@v5.1.1
