@@ -30,7 +30,7 @@ jobs:
           AUTHOR: ${{ github.event.pull_request.user.login }}
           BASE: ${{ github.event.pull_request.base.ref }}
           HEAD: ${{ github.event.pull_request.head.ref }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.AUTOREBASE_PAT }}
         run: |
           # TODO: changess github.event.changes.base first
           python -m venv "$TMP/venv"
@@ -38,17 +38,17 @@ jobs:
           python -m pip install ./mergify_cli-0.0.0-py3-none-any.whl
 
           STACK_BRANCH="${HEAD%%/I*}"
+          if [ "$STACK_BRANCH" == "$HEAD" ]; then
+            echo "This is not a stacked pull request"
+            exit 0
+          fi
+
           git config --global user.email "$AUTHOR@users.noreply.github.com"
           git config --global user.name "$AUTHOR"
-          git remote -v
           git branch --set-upstream-to "origin/$BASE"
-
-          git branch
-          git log --graph --abbrev-commit --pretty="tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset" -15
 
           mergify --debug stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$STACK_BRANCH" --branch-prefix "" --trunk "origin/$BASE"
 
-          git branch
           git log --graph --abbrev-commit --pretty="tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset" -15
 
           mergify --debug stack push --author "$AUTHOR" --branch "$STACK_BRANCH" --branch-prefix "" --trunk "origin/$BASE"
