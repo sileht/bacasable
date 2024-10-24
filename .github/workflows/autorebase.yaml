@@ -6,6 +6,10 @@ on:
   
 jobs:
   autorebase:
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
     # name: foobar_name
     runs-on: ubuntu-22.04
     steps:
