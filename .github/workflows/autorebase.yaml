@@ -30,10 +30,11 @@ jobs:
           source "$TMP/venv/bin/activate"
           python -m pip install ./mergify_cli-0.0.0-py3-none-any.whl
 
+          BRANCH="${HEAD%%/I*}"
           git remote -v
           git branch -a
           git branch --set-upstream-to "origin/$BASE"
-          mergify --debug stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$HEAD" --branch-prefix "" --trunk "origin/$BASE"
+          mergify --debug stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$BRANCH" --branch-prefix "" --trunk "origin/$BASE"
 
 
 
