@@ -20,13 +20,17 @@ jobs:
         env:
           TMP: ${{ runner.temp }}
           AUTHOR: ${{ github.event.pull_request.user.login }}
+          BASE: ${{ github.event.pull_request.base.ref }}
           HEAD: ${{ github.event.pull_request.head.ref }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python -m venv "$TMP/venv"
           source "$TMP/venv/bin/activate"
           python -m pip install ./mergify_cli-0.0.0-py3-none-any.whl
 
-          mergify stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$HEAD" --branch-prefix ""
+          git remote -v
+          git branch -a
+          mergify stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$HEAD" --branch-prefix "" --trunk "origin/$BASE"
 
 
 
