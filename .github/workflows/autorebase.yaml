@@ -30,7 +30,8 @@ jobs:
 
           git remote -v
           git branch -a
-          git branch --set-upstream-to "origin/$BASE"
+          git fetch "origin/$BASE"
+          git checkout -b "$BASE" "origin/$BASE"
           mergify stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$HEAD" --branch-prefix "" --trunk "origin/$BASE"
 
 
