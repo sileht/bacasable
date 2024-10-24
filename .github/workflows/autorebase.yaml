@@ -33,7 +33,7 @@ jobs:
           git remote -v
           git branch -a
           git branch --set-upstream-to "origin/$BASE"
-          mergify stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$HEAD" --branch-prefix "" --trunk "origin/$BASE"
+          mergify --debug stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$HEAD" --branch-prefix "" --trunk "origin/$BASE"
 
 
 
