@@ -1,0 +1,33 @@
+name: Mergify Stack Autorebase
+on:
+  pull_request:
+    types:
+      - edited
+  
+jobs:
+  autorebase:
+    # name: foobar_name
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python 🔧
+        uses: actions/setup-python@v5.1.1
+        with:
+          python-version: 3.12.4
+
+      - name: mergify-cli
+        env:
+          TMP: ${{ runner.temp }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          HEAD: ${{ github.event.pull_request.head.ref }}
+        run:
+          python -m venv "$TMP/venv"
+          source "$TMP/venv/bin/activate"
+          python -m pip install ./mergify_cli-0.0.0-py3-none-any.whl
+
+          mergify stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$HEAD" --branch-prefix ""
+
+
+
+
