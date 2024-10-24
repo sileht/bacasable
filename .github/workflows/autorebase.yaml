@@ -37,6 +37,8 @@ jobs:
           git branch --set-upstream-to "origin/$BASE"
           mergify --debug stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$BRANCH" --branch-prefix "" --trunk "origin/$BASE"
 
+          mergify --debug stack push --author "$AUTHOR" --branch "$BRANCH" --branch-prefix "" --trunk "origin/$BASE" -n
+
 
 
 
