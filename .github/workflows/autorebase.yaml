@@ -11,7 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           ref: ${{ github.event.pull_request.base.ref }}
+
 
       - name: Setup Python 🔧
         uses: actions/setup-python@v5.1.1
@@ -31,13 +33,13 @@ jobs:
           source "$TMP/venv/bin/activate"
           python -m pip install ./mergify_cli-0.0.0-py3-none-any.whl
 
-          BRANCH="${HEAD%%/I*}"
+          STACK_BRANCH="${HEAD%%/I*}"
           git remote -v
           git branch -a
           git branch --set-upstream-to "origin/$BASE"
-          mergify --debug stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$BRANCH" --branch-prefix "" --trunk "origin/$BASE"
+          mergify --debug stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$STACK_BRANCH" --branch-prefix "" --trunk "origin/$BASE"
 
-          mergify --debug stack push --author "$AUTHOR" --branch "$BRANCH" --branch-prefix "" --trunk "origin/$BASE" -n
+          mergify --debug stack push --author "$AUTHOR" --branch "$STACK_BRANCH" --branch-prefix "" --trunk "origin/$BASE" -n
 
 
 
