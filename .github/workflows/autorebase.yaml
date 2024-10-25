@@ -29,9 +29,6 @@ jobs:
       - name: mergify-cli
         env:
           TMP: ${{ runner.temp }}
-          AUTHOR: ${{ github.event.issue.pull_request.user.login }}
-          BASE: ${{ github.event.issue.pull_request.base.ref }}
-          HEAD: ${{ github.event.issue.pull_request.head.ref }}
           GITHUB_TOKEN: ${{ secrets.AUTOREBASE_PAT }}
         run: |
           # TODO: changess github.event.changes.base first
@@ -39,22 +36,8 @@ jobs:
           source "$TMP/venv/bin/activate"
           python -m pip install ./mergify_cli-0.0.0-py3-none-any.whl
 
-          STACK_BRANCH="${HEAD%%/I*}"
-          if [ "$STACK_BRANCH" == "$HEAD" ]; then
-            echo "This is not a stacked pull request"
-            exit 0
-          fi
+          #git config --global user.email "$AUTHOR@users.noreply.github.com"
+          #git config --global user.name "$AUTHOR"
+          #git branch --set-upstream-to "origin/$BASE"
 
-          git config --global user.email "$AUTHOR@users.noreply.github.com"
-          git config --global user.name "$AUTHOR"
-          git branch --set-upstream-to "origin/$BASE"
-
-          mergify --debug stack checkout --author "$AUTHOR" --repo "$GITHUB_REPOSITORY" --branch "$STACK_BRANCH" --branch-prefix "" --trunk "origin/$BASE"
-
-          git log --graph --abbrev-commit --pretty="tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset" -15
-
-          mergify --debug stack push --author "$AUTHOR" --branch "$STACK_BRANCH" --branch-prefix "" --trunk "origin/$BASE"
-
-
-
-
+          mergify --debug stack github-action-auto-rebase
