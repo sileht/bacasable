@@ -1,15 +1,12 @@
 name: Mergify Stack Autorebase
 on:
-  pull_request:
-    types:
-      - edited
-    branches:
-      - main
-      - devs/**
+  issue_comment:                                     
+    types: [created, edited, deleted]
 
   
 jobs:
   autorebase:
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '@mergify-cli rebase')
     # name: foobar_name
     runs-on: ubuntu-22.04
     steps:
