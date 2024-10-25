@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: 3.12
 
-      - name: Run mergify-cli
+      - name: Run mergify stack github-action-auto-rebase
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
