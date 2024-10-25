@@ -9,6 +9,7 @@ merge_protections:
     description: Make sure PR has a validation label
     if:
       - base = main
+      - label = autoqueue
     success_conditions:
       - label = autoqueue
 queue_rules:
