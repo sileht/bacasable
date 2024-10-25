@@ -24,7 +24,7 @@ jobs:
 
       - name: Run mergify stack github-action-auto-rebase
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.AUTOREBASE_PAT }}
         run: |
           python -m pip install ./mergify_cli-0.0.0-py3-none-any.whl
 
