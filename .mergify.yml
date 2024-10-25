@@ -1,6 +1,7 @@
 pull_request_rules:
   - name: Automatic queue
-    conditions: []
+    conditions: 
+      - label = autoqueue
     actions:
       queue:
 merge_protections:
@@ -9,7 +10,7 @@ merge_protections:
     if:
       - base = main
     success_conditions:
-      - label=autoqueue
+      - label = autoqueue
 queue_rules:
   - name: default
     merge_conditions:
