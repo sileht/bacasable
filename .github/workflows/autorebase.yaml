@@ -20,12 +20,6 @@ jobs:
         with:
           python-version: 3.12.4
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          echo "$GITHUB_CONTEXT"
-
       - name: mergify-cli
         env:
           TMP: ${{ runner.temp }}
@@ -35,9 +29,5 @@ jobs:
           python -m venv "$TMP/venv"
           source "$TMP/venv/bin/activate"
           python -m pip install ./mergify_cli-0.0.0-py3-none-any.whl
-
-          #git config --global user.email "$AUTHOR@users.noreply.github.com"
-          #git config --global user.name "$AUTHOR"
-          #git branch --set-upstream-to "origin/$BASE"
 
           mergify --debug stack github-action-auto-rebase
