@@ -20,6 +20,12 @@ jobs:
         with:
           python-version: 3.12.4
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+
       - name: mergify-cli
         env:
           TMP: ${{ runner.temp }}
