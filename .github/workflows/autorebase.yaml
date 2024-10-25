@@ -5,7 +5,7 @@ on:
 
   
 jobs:
-  autorebase:
+  mergify-stack-auto-rebase:
     if: github.event.issue.pull_request && startsWith(github.event.comment.body, '@mergify-cli stack rebase')
     runs-on: ubuntu-22.04
     permissions:
@@ -20,11 +20,10 @@ jobs:
       - name: Setup Python 🔧
         uses: actions/setup-python@v5.1.1
         with:
-          python-version: 3.12.4
+          python-version: 3.12
 
       - name: Run mergify-cli
         env:
-          GITHUB_TOKEN2: ${{ secrets.AUTOREBASE_PAT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python -m pip install ./mergify_cli-0.0.0-py3-none-any.whl
