@@ -13,19 +13,7 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Python 🔧
-        uses: actions/setup-python@v5.1.1
-        with:
-          python-version: 3.12
-
       - name: Run mergify stack github-action-auto-rebase
-        env:
+        uses: Mergifyio/mergify-cli@main
+        with:
           GITHUB_TOKEN: ${{ secrets.AUTOREBASE_PAT }}
-        run: |
-          python -m pip install ./mergify_cli-0.0.0-py3-none-any.whl
-
-          mergify --debug stack github-action-auto-rebase

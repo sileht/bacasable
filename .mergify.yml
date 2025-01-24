@@ -13,7 +13,7 @@ merge_protections:
     success_conditions:
       - label = autoqueue
 queue_rules:
-  - name: default
+  - name: Default
     merge_conditions:
       - and:
           - label = mergeit
