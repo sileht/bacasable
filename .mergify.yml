@@ -6,7 +6,7 @@ pull_request_rules:
       queue:
   - name: 
     conditions:
-      - label = "test"
+      - label = test
     actions:
       label:
         add:
