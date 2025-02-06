@@ -4,6 +4,14 @@ pull_request_rules:
       - label = autoqueue
     actions:
       queue:
+  - name: 
+    conditions:
+      - label = "test"
+    actions:
+      label:
+        add:
+          - x-commit/init/container
+
 merge_protections:
   - name: Only merge with validation label
     description: Make sure PR has a validation label
@@ -18,3 +26,4 @@ queue_rules:
       - and:
           - label = mergeit
           - schedule = 15:00-19:00[America/Vancouver]
+ 
