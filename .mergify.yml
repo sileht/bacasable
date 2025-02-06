@@ -4,7 +4,7 @@ pull_request_rules:
       - label = autoqueue
     actions:
       queue:
-  - name: 
+  - name: Testing label
     conditions:
       - label = test
     actions:
