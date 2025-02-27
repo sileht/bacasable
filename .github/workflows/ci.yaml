@@ -10,7 +10,7 @@ jobs:
       - name: Tests
         run: |
           echo "So many work to do"
-          sleep 10000
+          sleep 60
           echo "Test passed"
 
 
