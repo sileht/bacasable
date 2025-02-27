@@ -2,15 +2,15 @@ name: Continuous Integration
 
 on:
   pull_request:
-    types: [ labeled ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: |
-        github.event.action == 'labeled'
-        && github.event.label.name == 'x-commit/init/container'
     steps:
       - name: Tests
-        run: echo OK
+        run: |
+          echo "So many work to do"
+          sleep 10000
+          echo "Test passed"
+
 
