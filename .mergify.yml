@@ -31,6 +31,10 @@ defaults:
     update_method: rebase
 merge_queue:
   max_parallel_checks: 1
+
+merge_protections_settings:
+  reporting_method: deployments
+  
 merge_protections:
   - name: good title
     if:
