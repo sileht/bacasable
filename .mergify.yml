@@ -2,7 +2,6 @@ queue_rules:
   - name: standard
     queue_conditions:
       - base=main
-
 priority_rules:
   - name: high priority
     conditions:
@@ -16,14 +15,12 @@ priority_rules:
           - label = chore
           - label = docs
     priority: low
-
 partition_rules:
   - name: fallback
     fallback_partition: true
   - name: mergify
     conditions:
       - label = mergify
-
 defaults:
   queue_rule:
     batch_max_wait_time: 30 seconds
@@ -32,6 +29,13 @@ defaults:
     checks_timeout: 40 minutes
     merge_method: squash
     update_method: rebase
-
 merge_queue:
   max_parallel_checks: 1
+merge_protections:
+  - name: good title
+    if:
+      - base = main
+    success_conditions:
+      - "title ~=
+        ^(fix|feat|docs|style|refactor|perf|test|build|ci|chore|revert)(?:(.+))\
+        ?:"
