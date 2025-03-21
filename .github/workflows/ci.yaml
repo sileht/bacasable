@@ -13,6 +13,8 @@ jobs:
           echo "$GITHUB_JOB"
           echo "$GITHUB_JOB_ID"
           echo "$GITHUB_JOB_NAME"
+          echo "$RUNNER_NAME"
+          echo "$RUNNER_ID"
 
   matrix-self:
     runs-on: self-hosted
@@ -27,6 +29,8 @@ jobs:
           echo "$GITHUB_JOB"
           echo "$GITHUB_JOB_ID"
           echo "$GITHUB_JOB_NAME"
+          echo "$RUNNER_NAME"
+          echo "$RUNNER_ID"
 
   matrixnames-self:
     runs-on: self-hosted
@@ -42,6 +46,8 @@ jobs:
           echo "$GITHUB_JOB"
           echo "$GITHUB_JOB_ID"
           echo "$GITHUB_JOB_NAME"
+          echo "$RUNNER_NAME"
+          echo "$RUNNER_ID"
 
   simple-gh:
     runs-on: ubuntu-latest
@@ -52,6 +58,8 @@ jobs:
           echo "$GITHUB_JOB"
           echo "$GITHUB_JOB_ID"
           echo "$GITHUB_JOB_NAME"
+          echo "$RUNNER_NAME"
+          echo "$RUNNER_ID"
 
   matrix-gh:
     runs-on: ubuntu-latest
@@ -66,6 +74,8 @@ jobs:
           echo "$GITHUB_JOB"
           echo "$GITHUB_JOB_ID"
           echo "$GITHUB_JOB_NAME"
+          echo "$RUNNER_NAME"
+          echo "$RUNNER_ID"
 
   matrixnames-gh:
     runs-on: ubuntu-latest
@@ -81,4 +91,6 @@ jobs:
           echo "$GITHUB_JOB"
           echo "$GITHUB_JOB_ID"
           echo "$GITHUB_JOB_NAME"
+          echo "$RUNNER_NAME"
+          echo "$RUNNER_ID"
 
