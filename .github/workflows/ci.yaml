@@ -7,11 +7,9 @@ jobs:
   simple:
     runs-on: ubuntu-latest
     steps:
+      - uses: qoomon/actions--context@v4
       - name: Tests
-        env:
-          GITHUB_JOB_NAME: ${{ github.jobs[github.job].name }}
         run: |
-          echo "${{ github.job }}"
           echo "$GITHUB_JOB"
           echo "$GITHUB_JOB_NAME"
 
@@ -22,11 +20,9 @@ jobs:
         version: [10, 12, 14]
         os: [ubuntu-latest, windows-latest]
     steps:
+      - uses: qoomon/actions--context@v4
       - name: Tests
-        env:
-          GITHUB_JOB_NAME: ${{ github.jobs[github.job].name }}
         run: |
-          echo "${{ github.job }}"
           echo "$GITHUB_JOB"
           echo "$GITHUB_JOB_NAME"
 
@@ -38,11 +34,9 @@ jobs:
         version: [10, 12, 14]
         os: [ubuntu, windows]
     steps:
+      - uses: qoomon/actions--context@v4
       - name: Tests
-        env:
-          GITHUB_JOB_NAME: ${{ github.jobs[github.job].name }}
         run: |
-          echo "${{ github.job }}"
           echo "$GITHUB_JOB"
           echo "$GITHUB_JOB_NAME"
 
