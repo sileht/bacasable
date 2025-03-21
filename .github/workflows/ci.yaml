@@ -1,16 +1,42 @@
 name: Continuous Integration
 
 on:
-  pull_request:
+  push:
 
 jobs:
-  test:
+  simple:
     runs-on: ubuntu-latest
     steps:
       - name: Tests
         run: |
-          echo "So many work to do"
-          sleep 5
-          echo "Test passed"
+          echo "${{ github.job }}"
+          echo "$GITHUB_JOB"
+          echo "${{ github.jobs[github.job].name }}"
 
+  matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Tests
+        run: |
+          echo "${{ github.job }}"
+          echo "$GITHUB_JOB"
+          echo "${{ github.jobs[github.job].name }}"
+
+  matrixnames:
+    runs-on: ubuntu-latest
+    name: Matrix (${{ matrix.version }} / ${{ matrix.os }})
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+        os: [ubuntu, windows]
+    steps:
+      - name: Tests
+        run: |
+          echo "${{ github.job }}"
+          echo "$GITHUB_JOB"
+          echo "${{ github.jobs[github.job].name }}"
 
