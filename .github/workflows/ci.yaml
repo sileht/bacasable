@@ -4,16 +4,17 @@ on:
   push:
 
 jobs:
-  simple:
+  simple-self:
     runs-on: self-hosted
     steps:
       - uses: qoomon/actions--context@v4
       - name: Tests
         run: |
           echo "$GITHUB_JOB"
+          echo "$GITHUB_JOB_ID"
           echo "$GITHUB_JOB_NAME"
 
-  matrix:
+  matrix-self:
     runs-on: self-hosted
     strategy:
       matrix:
@@ -24,9 +25,10 @@ jobs:
       - name: Tests
         run: |
           echo "$GITHUB_JOB"
+          echo "$GITHUB_JOB_ID"
           echo "$GITHUB_JOB_NAME"
 
-  matrixnames:
+  matrixnames-self:
     runs-on: self-hosted
     name: Matrix (${{ matrix.version }} / ${{ matrix.os }})
     strategy:
@@ -38,5 +40,45 @@ jobs:
       - name: Tests
         run: |
           echo "$GITHUB_JOB"
+          echo "$GITHUB_JOB_ID"
+          echo "$GITHUB_JOB_NAME"
+
+  simple-gh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: qoomon/actions--context@v4
+      - name: Tests
+        run: |
+          echo "$GITHUB_JOB"
+          echo "$GITHUB_JOB_ID"
+          echo "$GITHUB_JOB_NAME"
+
+  matrix-gh:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: qoomon/actions--context@v4
+      - name: Tests
+        run: |
+          echo "$GITHUB_JOB"
+          echo "$GITHUB_JOB_ID"
+          echo "$GITHUB_JOB_NAME"
+
+  matrixnames-gh:
+    runs-on: ubuntu-latest
+    name: Matrix (${{ matrix.version }} / ${{ matrix.os }})
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+        os: [ubuntu, windows]
+    steps:
+      - uses: qoomon/actions--context@v4
+      - name: Tests
+        run: |
+          echo "$GITHUB_JOB"
+          echo "$GITHUB_JOB_ID"
           echo "$GITHUB_JOB_NAME"
 
