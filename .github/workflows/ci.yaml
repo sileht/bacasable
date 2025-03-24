@@ -14,6 +14,7 @@ jobs:
           echo "$GITHUB_JOB_NAME"
           echo "$RUNNER_NAME"
           echo "$RUNNER_ID"
+          echo "$RUNNER_ID"
       - uses: qoomon/actions--context@v4
       - name: Tests
         run: |
