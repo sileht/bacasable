@@ -7,6 +7,13 @@ jobs:
   simple-self:
     runs-on: self-hosted
     steps:
+      - name: Before
+        run: |
+          echo "$GITHUB_JOB"
+          echo "$GITHUB_JOB_ID"
+          echo "$GITHUB_JOB_NAME"
+          echo "$RUNNER_NAME"
+          echo "$RUNNER_ID"
       - uses: qoomon/actions--context@v4
       - name: Tests
         run: |
@@ -15,82 +22,3 @@ jobs:
           echo "$GITHUB_JOB_NAME"
           echo "$RUNNER_NAME"
           echo "$RUNNER_ID"
-
-  matrix-self:
-    runs-on: self-hosted
-    strategy:
-      matrix:
-        version: [10, 12, 14]
-        os: [ubuntu-latest, windows-latest]
-    steps:
-      - uses: qoomon/actions--context@v4
-      - name: Tests
-        run: |
-          echo "$GITHUB_JOB"
-          echo "$GITHUB_JOB_ID"
-          echo "$GITHUB_JOB_NAME"
-          echo "$RUNNER_NAME"
-          echo "$RUNNER_ID"
-
-  matrixnames-self:
-    runs-on: self-hosted
-    name: Matrix (${{ matrix.version }} / ${{ matrix.os }})
-    strategy:
-      matrix:
-        version: [10, 12, 14]
-        os: [ubuntu, windows]
-    steps:
-      - uses: qoomon/actions--context@v4
-      - name: Tests
-        run: |
-          echo "$GITHUB_JOB"
-          echo "$GITHUB_JOB_ID"
-          echo "$GITHUB_JOB_NAME"
-          echo "$RUNNER_NAME"
-          echo "$RUNNER_ID"
-
-  simple-gh:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: qoomon/actions--context@v4
-      - name: Tests
-        run: |
-          echo "$GITHUB_JOB"
-          echo "$GITHUB_JOB_ID"
-          echo "$GITHUB_JOB_NAME"
-          echo "$RUNNER_NAME"
-          echo "$RUNNER_ID"
-
-  matrix-gh:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        version: [10, 12, 14]
-        os: [ubuntu-latest, windows-latest]
-    steps:
-      - uses: qoomon/actions--context@v4
-      - name: Tests
-        run: |
-          echo "$GITHUB_JOB"
-          echo "$GITHUB_JOB_ID"
-          echo "$GITHUB_JOB_NAME"
-          echo "$RUNNER_NAME"
-          echo "$RUNNER_ID"
-
-  matrixnames-gh:
-    runs-on: ubuntu-latest
-    name: Matrix (${{ matrix.version }} / ${{ matrix.os }})
-    strategy:
-      matrix:
-        version: [10, 12, 14]
-        os: [ubuntu, windows]
-    steps:
-      - uses: qoomon/actions--context@v4
-      - name: Tests
-        run: |
-          echo "$GITHUB_JOB"
-          echo "$GITHUB_JOB_ID"
-          echo "$GITHUB_JOB_NAME"
-          echo "$RUNNER_NAME"
-          echo "$RUNNER_ID"
-
