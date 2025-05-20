@@ -1,25 +1,23 @@
-name: Continuous Integration
+name: Flaky CI
 
 on:
   push:
+  pull_request:
 
 jobs:
-  simple-self:
-    runs-on: ubuntu-24.04
+  test:
+    runs-on: ubuntu-latest
     steps:
-      - name: Before
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
         run: |
-          echo "$GITHUB_JOB"
-          echo "$GITHUB_JOB_ID"
-          echo "$GITHUB_JOB_NAME"
-          echo "$RUNNER_NAME"
-          echo "$RUNNER_ID"
-          echo "$RUNNER_ID"
-      - uses: qoomon/actions--context@v4
-      - name: Tests
-        run: |
-          echo "$GITHUB_JOB"
-          echo "$GITHUB_JOB_ID"
-          echo "$GITHUB_JOB_NAME"
-          echo "$RUNNER_NAME"
-          echo "$RUNNER_ID"
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest
