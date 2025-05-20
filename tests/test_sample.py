@@ -8,5 +8,5 @@ def test_stable_two():
     assert "mergify" in "pytest-mergify"
 
 def test_flaky():
-    if random.randint(1, 5) == 1:
+    if random.randint(1, 3) == 1:
         pytest.fail("Random flaky failure")
