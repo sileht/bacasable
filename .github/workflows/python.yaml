@@ -1,9 +1,7 @@
 name: Python CI
 
 on:
-  pull_request:
-    paths:
-      - 'python/**.'
+  workflow_call:
 
 jobs:
   test:
