@@ -2,43 +2,45 @@ name: CI
 
 on:
   pull_request:
-  push:
-    branches: [main]
 
 jobs:
   changes:
     runs-on: ubuntu-latest
     outputs:
-      js: ${{ steps.changes.outputs.js }}
-      python: ${{ steps.changes.outputs.python }}
+      docker: ${{ fromJSON(steps.changes.outputs.scopes).docker }}
+      python: ${{ fromJSON(steps.changes.outputs.scopes).python }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: dorny/paths-filter@v3
+      - uses: actions/checkout@v5
+      - uses: Mergifyio/gha-mergify-ci@v11
         id: changes
         with:
-          filters: |
-            js:
-              - 'js/**'
-            python:
-              - 'python/**'
-
-  javascript:
-    needs: changes
-    if: ${{ needs.changes.outputs.js == 'true' }}
-    uses: ./.github/workflows/javascript.yaml
+          action: scopes
+          token: ${{ secrets.MERGIFY_TOKEN }}
 
   python:
     needs: changes
     if: ${{ needs.changes.outputs.python == 'true' }}
-    uses: ./.github/workflows/python.yaml
-
-  all-green:
-    if: always()
-    needs: [changes, javascript, python]
     runs-on: ubuntu-latest
     steps:
-      - name: Decide whether the needed jobs succeeded or failed
-        uses: re-actors/alls-green@release/v1
+      - run: sleep 3
+
+  docker:
+    needs: changes
+    if: ${{ needs.changes.outputs.docker == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 30
+
+  ci-gate:
+    if: ${{ !cancelled() }}
+    needs:
+      - changes
+      - python
+      - docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify all jobs succeeded
+        uses: Mergifyio/gha-mergify-ci@v11
         with:
+          action: wait-jobs
           jobs: ${{ toJSON(needs) }}
-          allowed-skips: ${{ toJSON(needs) }}

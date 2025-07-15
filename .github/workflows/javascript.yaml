@@ -4,27 +4,8 @@ on:
   workflow_call:
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+  javascript:
+    uses: ./.github/workflows/javascript.yaml
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      - name: Install dependencies
-        working-directory: js
-        run: npm install
-
-      - name: Run tests
-        working-directory: js
-        run: npm test
-
-      - name: Mergify CI Upload
-        if: success() || failure()
-        uses: mergifyio/gha-mergify-ci@v6
-        with:
-          token: ${{ secrets.MERGIFY_TOKEN }}
-          report_path: js/junit.xml
+  python:
+    uses: ./.github/workflows/python.yaml
