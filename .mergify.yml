@@ -3,8 +3,10 @@ merge_queue:
 
 queue_rules:
   - name: standard
+    autoqueue: true
     queue_conditions:
       - base=main
+      - check-success=ci-gate
     batch_max_wait_time: 20 seconds
     batch_size: 2
  
