@@ -9,7 +9,7 @@ queue_rules:
       - check-success=ci-gate
     merge_conditions:
       - check-success=never
-    batch_max_wait_time: 20 seconds
+    batch_max_wait_time: 60 seconds
     batch_size: 2
  
 scopes:
@@ -20,6 +20,6 @@ scopes:
           - Dockerfile
       python:
         include:
-          - main.py
+          - main*.py
    
 

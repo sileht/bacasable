@@ -9,6 +9,7 @@ jobs:
     outputs:
       docker: ${{ fromJSON(steps.changes.outputs.scopes).docker }}
       python: ${{ fromJSON(steps.changes.outputs.scopes).python }}
+      merge-queue: ${{ fromJSON(steps.changes.outputs.scopes).merge-queue }}
     steps:
       - uses: actions/checkout@v5
       - uses: Mergifyio/gha-mergify-ci@v11
@@ -22,14 +23,18 @@ jobs:
     if: ${{ needs.changes.outputs.python == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - run: sleep 3
+      - if: ${{ needs.changes.outputs.merge-queue == 'true' }}
+        run: sleep 30
+      - run: echo Python CI succeeded
 
   docker:
     needs: changes
     if: ${{ needs.changes.outputs.docker == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - run: sleep 30
+      - if: ${{ needs.changes.outputs.merge-queue == 'true' }}
+        run: sleep 30
+      - run: echo Docker CI succeeded
 
   ci-gate:
     if: ${{ !cancelled() }}
