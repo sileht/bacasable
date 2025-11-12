@@ -1,0 +1,36 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "minimumReleaseAge": "3 days",
+  "lockFileMaintenance": { "enabled": true },
+  "packageRules": [
+    {
+      "matchPackageNames": ["postgres"],
+      "allowedVersions": "<18"
+    },
+    {
+        "groupName": "fastapi friends",
+        "groupSlug": "fastapi-friends",
+        "matchPackageNames": [
+            "fastapi",
+            "starlette",
+            "python-multipart"
+        ]
+    },
+    {
+        "groupName": "pydantic friends",
+        "groupSlug": "pydantic-friends",
+        "matchPackageNames": [
+            "pydantic",
+            "pydantic-core"
+        ]
+    },
+    {
+        "matchPackageNames": ["pytest-mergify"],
+        "minimumReleaseAge": "0 days"
+    }
+  ]
+}
