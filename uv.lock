@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "ddtrace", specifier = ">=3.0.0,<4" }]
+requires-dist = [{ name = "ddtrace", specifier = "==3.19.0" }]
 
 [[package]]
 name = "bytecode"
