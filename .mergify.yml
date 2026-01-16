@@ -1,6 +1,5 @@
 merge_queue:
   max_parallel_checks: 2
-
 queue_rules:
   - name: standard
     autoqueue: true
@@ -12,7 +11,6 @@ queue_rules:
       - check-success=never
     batch_max_wait_time: 60 seconds
     batch_size: 2
- 
 scopes:
   source:
     files:
@@ -22,5 +20,12 @@ scopes:
       python:
         include:
           - main*.py
-   
-
+merge_protections:
+  - name: Enforce conventional commit
+    description: Make sure that we follow https://www.conventionalcommits.org/en/v1.0.0/
+    if:
+      - base = main
+    success_conditions:
+      - "title ~=
+        ^(fix|feat|docs|style|refactor|perf|test|build|ci|chore|revert)(?:\\(.+\
+        \\))?:"
