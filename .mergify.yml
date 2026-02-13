@@ -11,6 +11,10 @@ queue_rules:
       - check-success=never
     batch_max_wait_time: 60 seconds
     batch_size: 2
+defaults:
+  actions:
+    rebase:
+      bot_account: sileht
 scopes:
   source:
     files:
