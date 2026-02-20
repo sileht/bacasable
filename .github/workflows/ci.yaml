@@ -30,17 +30,9 @@ jobs:
           BASE: ${{ needs.changes.outputs.base }}
           HEAD: ${{ needs.changes.outputs.head }}
         run: |
-          SCOPES=""
-          # Check if python files changed
-          if git diff --name-only "$BASE" "$HEAD" | grep -q '^main.*\.py$'; then
-            SCOPES="${SCOPES:+$SCOPES,}python"
-          fi
-          # Check if Dockerfile changed
-          if git diff --name-only "$BASE" "$HEAD" | grep -q '^Dockerfile$'; then
-            SCOPES="${SCOPES:+$SCOPES,}docker"
-          fi
-          echo "scopes=$SCOPES" >> "$GITHUB_OUTPUT"
-      - uses: Mergifyio/gha-mergify-ci@v11
+          # mimic nx project
+          echo "scopes=testing,foobar" >> "$GITHUB_OUTPUT"
+      - uses: Mergifyio/gha-mergify-ci@v12
         with:
           action: scopes-upload
           scopes: ${{ steps.detect.outputs.scopes }}
@@ -90,7 +82,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Verify all jobs succeeded
-        uses: Mergifyio/gha-mergify-ci@v11
+        uses: Mergifyio/gha-mergify-ci@v12
         with:
           action: wait-jobs
           jobs: ${{ toJSON(needs) }}
