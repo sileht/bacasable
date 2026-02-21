@@ -1,14 +1,14 @@
 merge_queue:
-  max_parallel_checks: 3
+  max_parallel_checks: 1
 queue_rules:
   - name: standard
+    autoqueue: true
     queue_conditions:
       - base=main
-      - label=queue
     merge_conditions:
-      - check-success=ci-gate
+      - check-success=failure
     batch_max_wait_time: 60 seconds
-    batch_size: 3
+    batch_size: 1
 scopes:
   source:
     manual:
