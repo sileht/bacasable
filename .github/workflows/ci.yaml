@@ -42,3 +42,8 @@ jobs:
         with:
           action: wait-jobs
           jobs: ${{ toJSON(needs) }}
+      - name: Failure
+        run: |
+          echo boom
+          exit 1
+
