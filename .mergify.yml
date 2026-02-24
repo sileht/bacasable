@@ -11,4 +11,18 @@ queue_rules:
     batch_size: 1
 scopes:
   source:
-    manual:
+    files:
+      python-api:
+        includes:
+          - api/**/*.py
+          - libs/shared/**/*.py
+      frontend:
+        includes:
+          - web/**/*.js
+          - web/**/*.jsx
+          - web/**/*.ts
+          - web/**/*.tsx
+      docs:
+        includes:
+          - docs/**/*.md
+          - docs/**/*.mdx
