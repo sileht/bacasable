@@ -1,0 +1,23 @@
+name: Log Event
+
+on:
+  pull_request:
+
+jobs:
+  log-event:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Log GitHub event file
+        run: cat "$GITHUB_EVENT_PATH" | jq .
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install mergify CLI
+        run: pip install mergify_cli.whl
+
+      - name: Run mergify ci scopes
+        run: mergify ci scopes
