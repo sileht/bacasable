@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - uses: Mergifyio/gha-mergify-ci@v13
+      - uses: Mergifyio/gha-mergify-ci@v14
         id: git-refs
         with:
           action: scopes-git-refs
@@ -33,7 +33,7 @@ jobs:
         run: |
           # mimic nx project
           echo "scopes=testing,foobar" >> "$GITHUB_OUTPUT"
-      - uses: Mergifyio/gha-mergify-ci@v13
+      - uses: Mergifyio/gha-mergify-ci@v14
         with:
           action: scopes-upload
           scopes: ${{ steps.detect.outputs.scopes }}
@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Verify all jobs succeeded
-        uses: Mergifyio/gha-mergify-ci@v12
+        uses: Mergifyio/gha-mergify-ci@v14
         with:
           action: wait-jobs
           jobs: ${{ toJSON(needs) }}
