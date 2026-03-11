@@ -2,6 +2,7 @@ merge_queue:
   max_parallel_checks: 2
 queue_rules:
   - name: standard
+    autoqueue: true
     queue_conditions:
       - base=main
       - check-success=ci-gate
@@ -9,6 +10,17 @@ queue_rules:
       - check-success=never
     batch_max_wait_time: 60 seconds
     batch_size: 2
+defaults:
+  actions:
+    rebase:
+      autosquash: true
+      bot_account: sileht
 scopes:
   source:
-    manual:
+    files:
+      docker:
+        include:
+          - Dockerfile
+      python:
+        include:
+          - main*.py
