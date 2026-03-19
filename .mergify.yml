@@ -1,5 +1,6 @@
 merge_queue:
-  max_parallel_checks: 2
+  mode: parallel
+  max_parallel_checks: 5
 queue_rules:
   - name: standard
     autoqueue: true
