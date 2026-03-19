@@ -1,0 +1,9 @@
+```yaml
+---
+checking_base_sha: ad65328462a3ba0c6bf56b8076568bcc10eb4ec5
+previous_failed_batches: []
+pull_requests:
+  - number: 12668
+...
+
+```
