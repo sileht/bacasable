@@ -60,13 +60,13 @@ echo "    These should be tested in PARALLEL"
 echo ""
 
 prep_branch "demo/docker1"
-sed -i '' 's/3.14/3.15/g' Dockerfile
+sed -i 's/3.14/3.15/g' Dockerfile
 git add Dockerfile
 git commit -m "docker: upgrade python to 3.15"
 create_pr "demo/docker1" "docker: upgrade python to 3.15"
 
 prep_branch "demo/python1"
-sed -i '' 's/hello world/hello universe/g' main1.py
+sed -i 's/hello world/hello universe/g' main1.py
 git add main1.py
 git commit -m "python: change greeting to universe"
 create_pr "demo/python1" "python: change greeting to universe"
@@ -78,7 +78,7 @@ echo "    This should WAIT for python1 to finish"
 echo ""
 
 prep_branch "demo/python2"
-sed -i '' 's/hello world/hello cosmos/g' main2.py
+sed -i 's/hello world/hello cosmos/g' main2.py
 git add main2.py
 git commit -m "python: change greeting to cosmos"
 create_pr "demo/python2" "python: change greeting to cosmos"
@@ -90,8 +90,8 @@ echo "    This should WAIT for both docker1 and python2"
 echo ""
 
 prep_branch "demo/cross1"
-sed -i '' 's/worker/app/g' Dockerfile
-sed -i '' 's/hello world/hello cross/g' main3.py
+sed -i 's/worker/app/g' Dockerfile
+sed -i 's/hello world/hello cross/g' main3.py
 git add Dockerfile main3.py
 git commit -m "all: rename worker to app and update greeting"
 create_pr "demo/cross1" "all: rename worker to app and update greeting"
