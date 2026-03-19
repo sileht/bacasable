@@ -1,0 +1,20 @@
+/* Main styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #2a2a72;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+}

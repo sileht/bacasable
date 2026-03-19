@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       docker: ${{ fromJSON(steps.changes.outputs.scopes).docker }}
-      python: ${{ fromJSON(steps.changes.outputs.scopes).python }}
+      backend: ${{ fromJSON(steps.changes.outputs.scopes).backend }}
+      frontend: ${{ fromJSON(steps.changes.outputs.scopes).frontend }}
+      docs: ${{ fromJSON(steps.changes.outputs.scopes).docs }}
       merge-queue: ${{ fromJSON(steps.changes.outputs.scopes).merge-queue }}
     steps:
       - uses: actions/checkout@v6
@@ -18,19 +20,45 @@ jobs:
           action: scopes
           token: ${{ secrets.MERGIFY_TOKEN }}
 
-  python:
+  backend:
     needs: changes
-    if: ${{ needs.changes.outputs.python == 'true' }}
+    if: ${{ needs.changes.outputs.backend == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo Python CI succeeded
+      - run: |
+          echo "Running backend tests..."
+          sleep 15
+          echo "Backend tests passed"
+
+  frontend:
+    needs: changes
+    if: ${{ needs.changes.outputs.frontend == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Running frontend build & tests..."
+          sleep 25
+          echo "Frontend tests passed"
 
   docker:
     needs: changes
     if: ${{ needs.changes.outputs.docker == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - run: sleep 20
+      - run: |
+          echo "Building Docker image..."
+          sleep 30
+          echo "Docker build passed"
+
+  docs:
+    needs: changes
+    if: ${{ needs.changes.outputs.docs == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Checking docs..."
+          sleep 5
+          echo "Docs check passed"
 
   check-merge-queue:
     runs-on: ubuntu-latest
@@ -41,7 +69,7 @@ jobs:
         run: |
           git fetch origin ${{ github.event.pull_request.base.sha }}
           if git diff --name-only ${{ github.event.pull_request.base.sha }}..HEAD | grep -q '^make-ci-fail$'; then
-            echo "::error::PR title contains 'merge queue:' and the file 'make-ci-fail' was changed/added. Failing CI."
+            echo "::error::CI failure triggered by make-ci-fail file"
             exit 1
           fi
 
@@ -49,8 +77,10 @@ jobs:
     if: ${{ !cancelled() }}
     needs:
       - changes
-      - python
+      - backend
+      - frontend
       - docker
+      - docs
       - check-merge-queue
     runs-on: ubuntu-latest
     steps:
