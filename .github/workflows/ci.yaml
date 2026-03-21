@@ -27,7 +27,7 @@ jobs:
     steps:
       - run: |
           echo "Running backend tests..."
-          sleep 15
+          sleep 120
           echo "Backend tests passed"
 
   frontend:
@@ -37,7 +37,7 @@ jobs:
     steps:
       - run: |
           echo "Running frontend build & tests..."
-          sleep 25
+          sleep 120
           echo "Frontend tests passed"
 
   docker:
@@ -47,7 +47,7 @@ jobs:
     steps:
       - run: |
           echo "Building Docker image..."
-          sleep 30
+          sleep 60
           echo "Docker build passed"
 
   docs:
@@ -57,7 +57,7 @@ jobs:
     steps:
       - run: |
           echo "Checking docs..."
-          sleep 5
+          sleep 30
           echo "Docs check passed"
 
   check-merge-queue:
