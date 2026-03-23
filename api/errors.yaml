@@ -1,0 +1,16 @@
+errors:
+  validation:
+    code: 400
+    message: "Invalid request parameters"
+  not_found:
+    code: 404
+    message: "Resource not found"
+  rate_limit:
+    code: 429
+    message: "Too many requests"
+  internal:
+    code: 500
+    message: "Internal server error"
+  unavailable:
+    code: 503
+    message: "Service temporarily unavailable"

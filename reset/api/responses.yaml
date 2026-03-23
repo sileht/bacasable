@@ -1,0 +1,14 @@
+responses:
+  success:
+    status: 200
+    format: json
+    envelope: true
+  created:
+    status: 201
+    format: json
+    envelope: true
+  paginated:
+    status: 200
+    format: json
+    page_size: 25
+    max_page_size: 100
