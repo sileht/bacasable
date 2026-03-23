@@ -1,6 +1,6 @@
 // Theme definitions
 const themes = {
-  dark: {
+  ocean: {
     background: "#1a1a2e",
     text: "#e0e0e0",
     accent: "#0f3460",
@@ -12,4 +12,4 @@ const themes = {
   },
 };
 
-module.exports = { themes, current: "dark" };
+module.exports = { themes, current: "ocean" };

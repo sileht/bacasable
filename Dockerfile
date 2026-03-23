@@ -1,6 +1,6 @@
 FROM python:3.15-slim-bookworm
 RUN apt-get update && apt-get install -y \
-    build-essential \
+    build-essential gcc \
     libssl-dev \
     libffi-dev \
     python3-dev \

@@ -1,5 +1,5 @@
 monitoring:
-  provider: prometheus
+  provider: datadog
   scrape_interval: 30s
   endpoints:
     - path: /metrics
