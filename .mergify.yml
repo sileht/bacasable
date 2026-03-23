@@ -31,3 +31,9 @@ scopes:
       docs:
         include:
           - docs/**
+      infra:
+        include:
+          - infra/**
+      api:
+        include:
+          - api/**
