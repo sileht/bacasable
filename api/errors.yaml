@@ -9,7 +9,7 @@ errors:
     code: 429
     message: "Too many requests"
   internal:
-    code: 500
+    code: 503
     message: "Internal server error"
   unavailable:
     code: 503
