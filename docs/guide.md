@@ -16,4 +16,4 @@ Set your environment variables:
 
 - `APP_ENV`: development or production
 - `APP_PORT`: port number (default: 8080)
-- `APP_DEBUG`: enable debug mode (default: false)
+- `APP_DEBUG`: enable debug mode (default: true)
