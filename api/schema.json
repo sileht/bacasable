@@ -9,7 +9,7 @@
     },
     "name": {
       "type": "string",
-      "maxLength": 255
+      "maxLength": 512
     },
     "status": {
       "type": "string",
