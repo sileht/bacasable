@@ -13,4 +13,4 @@ RUN peotry sync --only main
 
 WORKDIR /opt/app
 ENTRYPOINT ["poetry", "run"]
-CMD ["worker"]
+CMD ["server"]
