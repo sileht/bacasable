@@ -14,7 +14,6 @@ queue_rules:
 defaults:
   actions:
     rebase:
-      autosquash: true
       bot_account: sileht
 scopes:
   source:
@@ -37,3 +36,5 @@ scopes:
       api:
         include:
           - api/**
+merge_protections_settings:
+  reporting_method: check-runs
