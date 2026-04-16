@@ -1,0 +1,11 @@
+steps:
+  - label: ":mag: Detect scopes"
+    plugins:
+      - mergifyio/mergify-ci#v1:
+          action: scopes
+          token: "$${MERGIFY_CI_TOKEN}"
+
+  - wait: ~
+
+  - label: ":pipeline: Generate pipeline"
+    command: .buildkite/generate-pipeline.sh | buildkite-agent pipeline upload
