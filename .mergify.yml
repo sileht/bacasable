@@ -3,12 +3,14 @@ merge_queue:
   max_parallel_checks: 30
 queue_rules:
   - name: standard
-    autoqueue: true
+    autoqueue: false
     queue_conditions:
       - base=main
-      - "check-success=buildkite/bacasable"
+      # - "check-success=buildkite/bacasable"
+      - "check-success=ci-gate"
     merge_conditions:
-      - "check-success=buildkite/bacasable"
+      # - "check-success=buildkite/bacasable"
+      - "check-success=ci-gate"
       - schedule=SAT-SUN
     batch_max_wait_time: 30 seconds
     batch_size: 2
