@@ -9,6 +9,7 @@ queue_rules:
       - check-success=ci-gate
     merge_conditions:
       - check-success=ci-gate
+      - schedule=SAT-SUN
     batch_max_wait_time: 30 seconds
     batch_size: 2
 defaults:
