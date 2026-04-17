@@ -4,7 +4,7 @@ metadata:
   name: bacasable
   namespace: production
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: bacasable
   ports:

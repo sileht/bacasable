@@ -10,5 +10,5 @@ responses:
   paginated:
     status: 200
     format: json
-    page_size: 50
+    page_size: 25
     max_page_size: 100

@@ -2,7 +2,7 @@
 
 ## v1.0.0
 
-- Initial public release
+- Initial release
 - Basic API endpoints
 - Frontend dashboard
 - Docker support

@@ -1,5 +1,5 @@
 api:
-  rate_limit: 200
+  rate_limit: 100
   timeout: 30s
   max_body_size: 1mb
   cors:
