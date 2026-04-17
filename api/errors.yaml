@@ -10,7 +10,7 @@ errors:
     message: "Too many requests"
   internal:
     code: 500
-    message: "Internal service error"
+    message: "Internal server error"
   unavailable:
     code: 503
     message: "Service temporarily unavailable"

@@ -9,7 +9,7 @@ Returns the health status of the application.
 Returns the current version.
 
 ### POST /data
-Create new data for processing.
+Submit new data for processing.
 
 **Parameters:**
 - `name` (string): The data name

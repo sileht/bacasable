@@ -1,4 +1,4 @@
-FROM python:3.15-slim-bookworm
+FROM python:3.14-slim-bookworm
 RUN apt-get update && apt-get install -y \
     build-essential \
     libssl-dev \
@@ -11,6 +11,6 @@ RUN apt-get update && apt-get install -y \
 RUN peotry sync --only main
 
 
-WORKDIR /opt/app
+WORKDIR /app
 ENTRYPOINT ["poetry", "run"]
 CMD ["worker"]

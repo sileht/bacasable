@@ -2,4 +2,4 @@
 
 
 if __name__ == '__main__':
-    print("hello fullstack")
+    print("hello world")
