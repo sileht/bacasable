@@ -3,7 +3,7 @@ steps:
     plugins:
       - mergifyio/mergify-ci#v1:
           action: scopes
-          token: "$${MERGIFY_CI_TOKEN}"
+          token: "$${MERGIFY_TOKEN}"
 
   - wait: ~
 
