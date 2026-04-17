@@ -1,7 +1,7 @@
 // Frontend configuration
 const config = {
   apiUrl: "http://localhost:8080",
-  environment: "development",
+  environment: "production",
   debug: true,
   theme: "default",
   locale: "en-US",
