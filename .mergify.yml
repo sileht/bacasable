@@ -6,11 +6,9 @@ queue_rules:
     autoqueue: true
     queue_conditions:
       - base=main
-      # - "check-success=buildkite/bacasable"
-      - "check-success=ci-gate"
+      - "check-success=buildkite/bacasable"
     merge_conditions:
-      # - "check-success=buildkite/bacasable"
-      - "check-success=ci-gate"
+      - "check-success=buildkite/bacasable"
       - schedule=SAT-SUN
     batch_max_wait_time: 30 seconds
     batch_size: 2
