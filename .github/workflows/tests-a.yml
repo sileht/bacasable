@@ -1,0 +1,11 @@
+name: tests-a
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  tests-succeeded:
+    name: Tests Succeeded
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "workflow A — always succeeds"
