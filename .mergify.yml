@@ -3,7 +3,6 @@ merge_queue:
   max_parallel_checks: 30
 queue_rules:
   - name: standard
-    autoqueue: true
     queue_conditions:
       - base=main
       # - "check-success=buildkite/bacasable"
