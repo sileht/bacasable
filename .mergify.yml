@@ -40,4 +40,3 @@ scopes:
           - api/**
 merge_protections_settings:
   reporting_method: check-runs
-  auto_merge: true
