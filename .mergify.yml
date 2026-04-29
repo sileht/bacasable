@@ -10,7 +10,7 @@ queue_rules:
     merge_conditions:
       # - "check-success=buildkite/bacasable"
       - "check-success=ci-gate"
-      - schedule=SAT-SUN
+      - schedule = Mon-Fri 18:00-20:00[Europe/Paris]
     batch_max_wait_time: 30 seconds
     batch_size: 2
 defaults:
