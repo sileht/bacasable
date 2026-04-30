@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="fake-suite" tests="5" failures="1" errors="0" skipped="0" time="0.523">
+  <testsuite name="fake.tests" tests="5" failures="1" errors="0" skipped="0" time="0.523" timestamp="2026-05-01T10:00:00">
+    <testcase classname="fake.tests.TestExample" name="test_addition" time="0.101"/>
+    <testcase classname="fake.tests.TestExample" name="test_subtraction" time="0.087"/>
+    <testcase classname="fake.tests.TestExample" name="test_multiplication" time="0.112"/>
+    <testcase classname="fake.tests.TestExample" name="test_division" time="0.095">
+      <failure message="AssertionError: expected 2 but got 3" type="AssertionError">
+Traceback (most recent call last):
+  File "fake/tests/test_example.py", line 42, in test_division
+    self.assertEqual(result, 2)
+AssertionError: expected 2 but got 3
+      </failure>
+    </testcase>
+    <testcase classname="fake.tests.TestExample" name="test_modulo" time="0.128"/>
+  </testsuite>
+</testsuites>

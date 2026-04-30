@@ -7,7 +7,6 @@ queue_rules:
       - base=main
       # - "check-success=buildkite/bacasable"
       - "check-success=ci-gate"
-      - "label=queue"
     merge_conditions:
       # - "check-success=buildkite/bacasable"
       - "check-success=ci-gate"
@@ -41,4 +40,4 @@ scopes:
           - api/**
 merge_protections_settings:
   reporting_method: check-runs
-  auto_merge: true
+  auto_merge: false
