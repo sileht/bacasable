@@ -1,6 +1,6 @@
 // UI Components
 function Button(label) {
-  return `<button class="primary">${label}</button>`;
+  return `<button class="secondary">${label}</button>`;
 }
 
 function Card(title, content) {
