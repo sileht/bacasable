@@ -1,6 +1,6 @@
 monitoring:
   provider: prometheus
-  scrape_interval: 30s
+  scrape_interval: 15s
   endpoints:
     - path: /metrics
       port: 9090
