@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
 
 
 
-RUN peotry sync --only main
+RUN poetry sync --only main
 
 
 WORKDIR /app
