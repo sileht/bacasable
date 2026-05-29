@@ -13,7 +13,7 @@ queue_rules:
       - "check-success=ci-gate"
       - schedule = Mon-Fri 18:00-20:00[Europe/Paris]
     batch_max_wait_time: 30 seconds
-    batch_size: 2
+    batch_size: 5
 
 defaults:
   actions:
