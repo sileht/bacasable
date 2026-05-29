@@ -44,4 +44,4 @@ scopes:
 
 merge_protections_settings:
   reporting_method: deployments
-  auto_merge: false
+  auto_merge: true
