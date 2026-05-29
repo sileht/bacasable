@@ -11,6 +11,6 @@ RUN apt-get update && apt-get install -y \
 RUN peotry sync --only main
 
 
-WORKDIR /app
+WORKDIR /opt/app
 ENTRYPOINT ["poetry", "run"]
 CMD ["worker"]
