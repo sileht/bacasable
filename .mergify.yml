@@ -1,6 +1,7 @@
 merge_queue:
-  mode: parallel
+  mode: isolated
   max_parallel_checks: 30
+
 queue_rules:
   - name: standard
     queue_conditions:
@@ -13,10 +14,12 @@ queue_rules:
       - schedule = Mon-Fri 18:00-20:00[Europe/Paris]
     batch_max_wait_time: 30 seconds
     batch_size: 2
+
 defaults:
   actions:
     rebase:
       bot_account: sileht
+
 scopes:
   source:
     files:
@@ -38,6 +41,7 @@ scopes:
       api:
         include:
           - api/**
+
 merge_protections_settings:
-  reporting_method: check-runs
+  reporting_method: deployments
   auto_merge: false
