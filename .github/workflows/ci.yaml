@@ -15,7 +15,7 @@ jobs:
       merge-queue: ${{ fromJSON(steps.changes.outputs.scopes).merge-queue }}
     steps:
       - uses: actions/checkout@v6
-      - uses: Mergifyio/gha-mergify-ci@v18
+      - uses: Mergifyio/gha-mergify-ci@v19
         id: changes
         with:
           action: scopes
@@ -86,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Verify all jobs succeeded
-        uses: Mergifyio/gha-mergify-ci@v18
+        uses: Mergifyio/gha-mergify-ci@v19
         with:
           action: wait-jobs
           jobs: ${{ toJSON(needs) }}
