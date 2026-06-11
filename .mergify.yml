@@ -45,3 +45,12 @@ scopes:
 merge_protections_settings:
   reporting_method: deployments
   auto_merge_conditions: true
+
+merge_protections:
+  - name: Code owner review satisfied
+    description: |
+      Tests Mergify's CODEOWNERS support. A PR touching an owned path
+      (see .github/CODEOWNERS) stays red until an owner approves it.
+      A PR touching only unowned paths passes vacuously.
+    success_conditions:
+      - github-code-owner-review-satisfied

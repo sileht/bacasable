@@ -1,0 +1,12 @@
+# CODEOWNERS - used to test Mergify's `github-code-owner-review-satisfied`.
+#
+# Paths listed here have an owner: a PR touching them stays unsatisfied
+# until one of the owners approves it (the "match" case).
+# Paths NOT listed here have no owner, so the attribute is vacuously
+# satisfied (the "no match" case).
+
+/frontend/   @sileht
+/api/        @sileht
+*.py         @sileht
+
+# docs/ is intentionally left without an owner (negative test case).
