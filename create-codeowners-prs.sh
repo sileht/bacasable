@@ -22,7 +22,7 @@ git add frontend/app.js
 git commit -m "test(codeowners): touch owned path frontend/app.js"
 git push -u origin "$BRANCH" -f
 gh pr create --title "codeowners: match (owned path)" \
-  --body "Touches frontend/app.js (owned by @sileht in CODEOWNERS). The 'Code owner review satisfied' protection should stay RED until @sileht approves."
+  --body "Touches frontend/app.js (owned by @sileht-test in CODEOWNERS). The 'Code owner review satisfied' protection should stay RED until @sileht-test approves."
 
 # --- Non-matching PR: touches only an unowned path ----------------------
 git checkout main

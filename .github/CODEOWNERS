@@ -5,8 +5,10 @@
 # Paths NOT listed here have no owner, so the attribute is vacuously
 # satisfied (the "no match" case).
 
-/frontend/   @sileht
-/api/        @sileht
-*.py         @sileht
+# Owner is @sileht-test (write access), not @sileht, so the PR author
+# can request and receive a code owner approval.
+/frontend/   @sileht-test
+/api/        @sileht-test
+*.py         @sileht-test
 
 # docs/ is intentionally left without an owner (negative test case).
