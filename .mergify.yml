@@ -52,5 +52,7 @@ merge_protections:
       Tests Mergify's CODEOWNERS support. A PR touching an owned path
       (see .github/CODEOWNERS) stays red until an owner approves it.
       A PR touching only unowned paths passes vacuously.
+    if:
+      - base = main
     success_conditions:
       - github-code-owner-review-satisfied
