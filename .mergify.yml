@@ -44,7 +44,7 @@ scopes:
 
 merge_protections_settings:
   reporting_method: deployments
-  auto_merge_conditions: false
+  # auto_merge_conditions: true
 
 merge_protections:
   - name: Code owner review satisfied
