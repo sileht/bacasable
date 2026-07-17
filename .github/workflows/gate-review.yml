@@ -1,0 +1,12 @@
+name: gate-review
+on:
+  pull_request_review:
+    types: [submitted]
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: decide
+        run: |
+          echo "GATE_RESULT=${{ vars.GATE_RESULT }}"
+          [ "${{ vars.GATE_RESULT }}" = "success" ]
