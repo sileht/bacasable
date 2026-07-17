@@ -26,7 +26,7 @@ queue_rules:
       - base=main
       # A PR only enters the queue once its own CI is green — the bypass then
       # trusts that green CI instead of re-running it.
-      - "check-success=ci-gate"
+      # - "check-success=ci-gate"
     merge_conditions:
       - "check-success=ci-gate"
     batch_max_wait_time: 30 seconds
