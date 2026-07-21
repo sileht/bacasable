@@ -61,5 +61,4 @@ scopes:
 
 merge_protections_settings:
   reporting_method: deployments
-  auto_merge_conditions:
-    - "label=queue"
+  auto_merge_conditions: true
