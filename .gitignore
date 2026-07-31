@@ -1,1 +1,7 @@
 demo.sh
+
+# local junit-split demo scratch
+.junit-split-demo/
+
+# large junit upload demo scratch
+.junit-500mb-demo/
