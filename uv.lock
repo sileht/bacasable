@@ -15,11 +15,11 @@ requires-dist = [{ name = "ddtrace", specifier = "==4.13.1" }]
 
 [[package]]
 name = "bytecode"
-version = "0.18.1"
+version = "0.19.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/27/8f/7d12c539869a5cbd801d550b86cc0f030ecaeb12f57f8b3ff19f2d2a184c/bytecode-0.18.1.tar.gz", hash = "sha256:d9564f1565fe1ae6a1173e544ef43a85f093e83997ef45af65d0d250eb48d7a1", size = 104631, upload-time = "2026-06-03T14:17:59.115Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/c6/e9/9f355e80d57fc271d35631883778564aeea02c35b4cfb4b64d84cb653aed/bytecode-0.19.0.tar.gz", hash = "sha256:fb733957396cb82301f3f79cd320aef262cd0592c93d6b4fd656771506999624", size = 106372, upload-time = "2026-08-21T21:17:40.082Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d9/ef/6a629424ec08adc3819ddfd7ec0a710361eaa29d1e5fffb4e02f074be5c9/bytecode-0.18.1-py3-none-any.whl", hash = "sha256:9535bfdd665260b2888ec4121569e3ca5106965a7fedbb6de6ba1bafebc5c7d7", size = 42868, upload-time = "2026-06-03T14:17:57.654Z" },
+    { url = "https://files.pythonhosted.org/packages/ae/38/c8397880426bb56b139a0b53f69a4e54cf770c358b8c1ad872b3c88430d3/bytecode-0.19.0-py3-none-any.whl", hash = "sha256:7b32811d4a574f5ebcdc84ae8d37af928d980f31d6aa5aea2cab9f6d364489d1", size = 43277, upload-time = "2026-08-21T21:17:38.589Z" },
 ]
 
 [[package]]
